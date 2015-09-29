@@ -54,15 +54,19 @@ new InfiniteScroll('example', {
                 on: 'blur'
             }]
         },
-        phone:{
+        phone: {
             data: {
                 phone: ':phone:'
-            }
+            },
+            listener: [
+                {
+                    handle: (e) => {
+                        alert('Attribute phone: ' + e.target.getAttribute('data-phone'))
+                    },
+                    on: 'click'
+                }
+            ]
         },
-        listener: [{
-            handle: (e) => {alert('Attribute phone: ' + e.target.getAttribute('data-phone'))},
-            on: 'click'
-        }]
     }
 });
 

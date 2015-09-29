@@ -247,14 +247,14 @@ new _infiniteScrollJs2['default']('example', {
         phone: {
             data: {
                 phone: ':phone:'
-            }
-        },
-        listener: [{
-            handle: function handle(e) {
-                alert('Attribute phone: ' + e.target.getAttribute('data-phone'));
             },
-            on: 'click'
-        }]
+            listener: [{
+                handle: function handle(e) {
+                    alert('Attribute phone: ' + e.target.getAttribute('data-phone'));
+                },
+                on: 'click'
+            }]
+        }
     }
 });
 

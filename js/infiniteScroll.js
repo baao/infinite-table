@@ -128,7 +128,6 @@ var InfiniteScroll = (function () {
         value: function handleResponse(data) {
             var _this6 = this;
 
-            console.log('handleResponse' + data);
             Promise.resolve(this.addElementsToDOM(data)).then(function () {
                 _this6.page++;
                 _this6.elementToWatch = document.getElementById(_this6.element).rows[document.getElementById(_this6.element).rows.length - _this6.options.loadTiming];

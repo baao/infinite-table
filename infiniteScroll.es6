@@ -120,7 +120,6 @@ export default class InfiniteScroll {
     }
 
     handleResponse(data) {
-        console.log('handleResponse' + data);
         Promise.resolve(this.addElementsToDOM(data))
             .then(() => {
                 this.page++;

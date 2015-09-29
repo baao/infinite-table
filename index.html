@@ -8,11 +8,13 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+      <link rel="stylesheet" type="text/css" href="stylesheets/style.css" media="screen">
   </head>
   <body>
     <section class="page-header">
       <h1 class="project-name">Infinite-table</h1>
       <h2 class="project-tagline"></h2>
+        <a href="#DEMO">DEMO</a>
       <a href="https://github.com/baao/infinite-table" class="btn">View on GitHub</a>
       <a href="https://github.com/baao/infinite-table/zipball/master" class="btn">Download .zip</a>
       <a href="https://github.com/baao/infinite-table/tarball/master" class="btn">Download .tar.gz</a>
@@ -96,8 +98,64 @@ everything else works out of the box.</p>
 <p>lodash, bluebird<br>
 included: SpinKit from <a href="https://github.com/tobiasahlin/SpinKit">https://github.com/tobiasahlin/SpinKit</a></p>
 
+
+
 <h3>
 <a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>LICENSE</h3>
+        <div id="DEMO"><h3>DEMO</h3>
+            balance is editable, name and phone both have click event listeners attached. Try it out!
+            Example configuration:
+
+   <pre> <code>
+       new InfiniteScroll('example', {
+            transport: 'faker',  // switch to ajax
+            url: '/example/exampleData.json',  // switch to url
+                fields: {
+                    name:{
+                        data: {
+                            id: ':_id:'
+                        },
+                        listener: [{
+                            handle: (e) => {alert('Attribute id: ' + e.target.getAttribute('data-id'))}, // callback
+                            on: 'click' // listen for event
+                        }]
+                    },
+                    balance:{
+                        editable: [{
+                            handle: (e) => {
+                                alert('New balance: ' + e.target.innerHTML)
+                            },
+                            on: 'blur'
+                        }]
+                    },
+                    phone:{
+                        data: {
+                            phone: ':phone:'
+                        },
+                        listener: [{
+                            handle: (e) => {alert('Attribute phone: ' + e.target.getAttribute('data-phone'))},
+                            on: 'click'
+                        }]
+                    }
+                }
+       });
+
+   </code> </pre>
+            <div>
+                <table id="example">
+                    <thead>
+                    <tr>
+                        <th>name</th>
+                        <th>balance</th>
+                        <th>phone</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
 <p>MIT</p>
 

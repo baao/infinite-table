@@ -2,9 +2,9 @@
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-var _jsInfiniteScrollJs = require('./../js/infiniteScroll.js');
+var _infiniteScrollJs = require('./../infiniteScroll.js');
 
-var _jsInfiniteScrollJs2 = _interopRequireDefault(_jsInfiniteScrollJs);
+var _infiniteScrollJs2 = _interopRequireDefault(_infiniteScrollJs);
 
 // FAKER
 function slicer(data) {
@@ -17,7 +17,7 @@ function slicer(data) {
     }
     return temparray;
 }
-_jsInfiniteScrollJs2['default'].prototype.faker = function () {
+_infiniteScrollJs2['default'].prototype.faker = function () {
     var getJSON = function getJSON(url) {
         var xhr = typeof XMLHttpRequest != 'undefined' ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
         xhr.open('get', url, true);
@@ -39,7 +39,7 @@ _jsInfiniteScrollJs2['default'].prototype.faker = function () {
     };
 };
 
-new _jsInfiniteScrollJs2['default']('exampleTable', {
+new _infiniteScrollJs2['default']('exampleTable', {
     transport: 'faker',
     url: '/example/exampleData.json',
     fields: {

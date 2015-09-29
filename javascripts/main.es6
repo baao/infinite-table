@@ -1,4 +1,4 @@
-import InfiniteScroll from './../js/infiniteScroll.js';
+import InfiniteScroll from './../infiniteScroll.js';
 // FAKER
 function slicer(data){
     var i,j,temparray,chunk = 20;

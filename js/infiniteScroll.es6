@@ -99,10 +99,6 @@ export default class InfiniteScroll {
         return [recordsToFetchStart, recordsToFetchEnd];
     }
 
-    faker() {
-
-    }
-
     ajax() {
         let records = this.recordsToFetch();
         var xhr = new XMLHttpRequest();

@@ -106,41 +106,42 @@ included: SpinKit from <a href="https://github.com/tobiasahlin/SpinKit">https://
 
         <div id="DEMO"><h3>DEMO</h3>
             Balance is editable, name and phone both have click event listeners attached. Try it out! See example data at gh-pages/example/exampleData.json
+            <hr>
             Example configuration:
 
    <pre> <code>
-       new InfiniteScroll('example', {
-            transport: 'faker',  // switch to ajax
-            url: '/example/exampleData.json',  // switch to url
-                fields: {
-                    name:{
-                        data: {
-                            id: ':_id:'
-                        },
-                        listener: [{
-                            handle: (e) => {alert('Attribute id: ' + e.target.getAttribute('data-id'))}, // callback
-                            on: 'click' // listen for event
-                        }]
-                    },
-                    balance:{
-                        editable: [{
-                            handle: (e) => {
-                                alert('New balance: ' + e.target.innerHTML)
-                            },
-                            on: 'blur'
-                        }]
-                    },
-                    phone:{
-                        data: {
-                            phone: ':phone:'
-                        },
-                        listener: [{
-                            handle: (e) => {alert('Attribute phone: ' + e.target.getAttribute('data-phone'))},
-                            on: 'click'
-                        }]
-                    }
-                }
-       });
+ new InfiniteScroll('example', {
+      transport: 'faker',  // switch to ajax
+      url: '/example/exampleData.json',  // switch to url
+          fields: {
+              name:{
+                  data: {
+                      id: ':_id:'
+                  },
+                  listener: [{
+                      handle: (e) => {alert('Attribute id: ' + e.target.getAttribute('data-id'))}, // callback
+                      on: 'click' // listen for event
+                  }]
+              },
+              balance:{
+                  editable: [{
+                      handle: (e) => {
+                          alert('New balance: ' + e.target.innerHTML)
+                      },
+                      on: 'blur'
+                  }]
+              },
+              phone:{
+                  data: {
+                      phone: ':phone:'
+                  },
+                  listener: [{
+                      handle: (e) => {alert('Attribute phone: ' + e.target.getAttribute('data-phone'))},
+                      on: 'click'
+                  }]
+              }
+          }
+ });
 
    </code> </pre>
 

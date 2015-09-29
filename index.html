@@ -1,175 +1,124 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Infinite-table by baao</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/style.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Infinite-table</h1>
+      <h2 class="project-tagline"></h2>
+      <a href="https://github.com/baao/infinite-table" class="btn">View on GitHub</a>
+      <a href="https://github.com/baao/infinite-table/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/baao/infinite-table/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
 
-    <title>Infinite-table by baao</title>
-</head>
+    <section class="main-content">
+      <h1>
+<a id="infinite-table" class="anchor" href="#infinite-table" aria-hidden="true"><span class="octicon octicon-link"></span></a>infinite-table</h1>
 
-<body>
+<p>An infinite scrolling table with editable features. No jQuery.</p>
 
-<header>
-    <div class="container">
-        <h1>Infinite-table</h1>
-        <h2></h2>
+<h3>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h3>
 
-        <section id="downloads">
-            <a href="#DEMO" class="btn">DEMO</a>
-            <a href="https://github.com/baao/infinite-table/zipball/master" class="btn">Download as .zip</a>
-            <a href="https://github.com/baao/infinite-table/tarball/master" class="btn">Download as .tar.gz</a>
-            <a href="https://github.com/baao/infinite-table" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
-        </section>
-    </div>
-</header>
-
-<div class="container">
-    <section id="main_content">
-        <h1>
-            <a id="infinite-table" class="anchor" href="#infinite-table" aria-hidden="true"><span class="octicon octicon-link"></span></a>infinite-table</h1>
-
-        <p>An infinite scrolling table with editable features. No jQuery.</p>
-
-        <h3>
-            <a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h3>
-
-        <p>Minimum required setup:</p>
+<p>Minimum required setup:</p>
 
 <pre><code>var InfiniteScroll = require('infinite-table');
-    new InfiniteScroll('&lt;table element ID&gt;', {
-        url: &lt;url to get data from&gt;,
-        fields: {
-            &lt;returned data property&gt; : {}
-        }
-    });
+new InfiniteScroll('&lt;table element ID&gt;', {
+    url: &lt;url to get data from&gt;,
+    fields: {
+        &lt;returned data property&gt; : {}
+    }
+});
 </code></pre>
 
-        <p>For the spinner, include </p>
+<p>For the spinner, include </p>
 
 <pre><code>&lt;link rel="stylesheet" href="/css/style.css"/&gt;
 </code></pre>
 
-        <p>Options: </p>
+<p>Options: </p>
 
-<pre><code>
-    new InfiniteScroll('&lt;table element ID&gt;', {
-        url: &lt;url to get data from&gt;,
-            fields: {
-                &lt;returned data property&gt; : {
-                    data: {
-                        &lt;data-attribute&gt;: ':&lt;returned data property&gt;:'
-                        // for example:
-                        id: ':id:' // will create a data-attribute like data-id="1"
-                    },
-                    // setup listener, e.g. "click" listener (set as many as you wish):
-                    listener: [{
-                        handle: (e) =&gt; {alert(e.target.innerHTML)}, // callback
-                        on: 'click' // listen for event
-                    }],
-                    // if editable is provided, the td will be given contenteditable attribute,
-                    // same signature as above for listeners
-                    editable: [{
-                        handle: (e) =&gt; {alert(e.target.innerHTML)},
-                        on: 'blur'
-                    }]
-                }
+<pre><code>new InfiniteScroll('&lt;table element ID&gt;', {
+    url: &lt;url to get data from&gt;,
+    fields: {
+        &lt;returned data property&gt; : {
+            data: {
+                &lt;data-attribute&gt;: ':&lt;returned data property&gt;:'
+                // for example:
+                id: ':id:' // will create a data-attribute like data-id="1"
             },
-        perPage: 20, // how many entries should be fetched per "page"
-        loadTiming: 2, // when should the loading happen (defaults to the penultimate tr)
-        transport: 'ajax', // possible transports: ajax/websockets,
-        spinner: 0 // possible 0, 1, 2
-    });
+            // setup listener, e.g. "click" listener (set as many as you wish):
+            listener: [{
+                handle: (e) =&gt; {alert(e.target.innerHTML)}, // callback
+                on: 'click' // listen for event
+            }],
+            // if editable is provided, the td will be given contenteditable attribute,
+            // same signature as above for listeners
+            editable: [{
+                handle: (e) =&gt; {alert(e.target.innerHTML)},
+                on: 'blur'
+            }]
+        }
+    },
+    perPage: 20, // how many entries should be fetched per "page"
+    loadTiming: 2, // when should the loading happen (defaults to the penultimate tr)
+    transport: 'ajax', // possible transports: ajax/websockets,
+    spinner: 0 // possible 0, 1, 2
+});
 </code></pre>
 
-        <p>An ajax (default) / websockets <code>GET</code> request is made whenever you hit the trigger. The signature is:</p>
+<p>An ajax (default) / websockets <code>GET</code> request is made whenever you hit the trigger. The signature is:</p>
 
 <pre><code>&lt;url&gt;?skip=&lt;skip&gt;&amp;limit=&lt;limit&gt;
 </code></pre>
 
-        <p>So your backend only has to <code>GET</code> skip and limit to query for the data.
-            Example query</p>
+<p>So your backend only has to <code>GET</code> skip and limit to query for the data. 
+Example query</p>
 
 <pre><code>SELECT * FROM `foo` LIMIT &lt;limit&gt; OFFSET &lt;skip&gt;
 </code></pre>
 
-        <p>If you're using <a href="https://github.com/balderdashy/sails">sails.js</a> you're in luck - simply create the contoller and model,
-            everything else works out of the box.</p>
+<p>If you're using <a href="https://github.com/balderdashy/sails">sails.js</a> you're in luck - simply create the contoller and model,
+everything else works out of the box.</p>
 
-        <p>The scroller expects json data as returned object.    </p>
+<p>The scroller expects json data as returned object.    </p>
 
-        <h3>
-            <a id="included-dependencies" class="anchor" href="#included-dependencies" aria-hidden="true"><span class="octicon octicon-link"></span></a>INCLUDED DEPENDENCIES</h3>
+<h3>
+<a id="included-dependencies" class="anchor" href="#included-dependencies" aria-hidden="true"><span class="octicon octicon-link"></span></a>INCLUDED DEPENDENCIES</h3>
 
-        <p>lodash, bluebird<br>
-            included: SpinKit from <a href="https://github.com/tobiasahlin/SpinKit">https://github.com/tobiasahlin/SpinKit</a></p>
+<p>lodash, bluebird<br>
+included: SpinKit from <a href="https://github.com/tobiasahlin/SpinKit">https://github.com/tobiasahlin/SpinKit</a></p>
 
-        <h3>
-            <a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>LICENSE</h3>
+<h3>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>LICENSE</h3>
 
-        <p>MIT</p>
-        <div id="DEMO"><h3>DEMO</h3>
-            balance is editable, name and phone both have click event listeners attached. Try it out!
-            Example configuration:
+<p>MIT</p>
 
-   <pre> <code>
-       new InfiniteScroll('example', {
-            transport: 'faker',  // switch to ajax
-            url: '/example/exampleData.json',  // switch to url
-                fields: {
-                    name:{
-                        data: {
-                            id: ':_id:'
-                        },
-                    listener: [{
-                        handle: (e) => {alert('Attribute id: ' + e.target.getAttribute('data-id'))}, // callback
-                        on: 'click' // listen for event
-                    }]
-                },
-                balance:{
-                    editable: [{
-                        handle: (e) => {
-                            alert('New balance: ' + e.target.innerHTML)
-                        },
-                         on: 'blur'
-                    }]
-                },
-                phone:{
-                    data: {
-                        phone: ':phone:'
-                    },
-                    listener: [{
-                        handle: (e) => {alert('Attribute phone: ' + e.target.getAttribute('data-phone'))},
-                        on: 'click'
-                    }]
-                }
-            }
-       });
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/baao/infinite-table">Infinite-table</a> is maintained by <a href="https://github.com/baao">baao</a>.</span>
 
-   </code> </pre>
-            <div>
-                <table id="example">
-                    <thead>
-                    <tr>
-                        <th>name</th>
-                        <th>balance</th>
-                        <th>phone</th>
-                    </tr>
-                    </thead>
-                    <tbody>
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
 
-                    </tbody>
-                </table>
-            </div>
-        </div>
     </section>
-</div>
 
-<script src="javascripts/main-comp.js"></script>
+            <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-68237215-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
 
-
-</body>
+  </body>
 </html>

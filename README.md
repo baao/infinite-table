@@ -1,6 +1,7 @@
 # infinite-table
 
-An infinite scrolling table with editable features. No jQuery.
+An infinite scrolling table with editable features. No jQuery required.
+[See the demo](http://baao.github.io/infinite-table/)
 
 ### Usage
 

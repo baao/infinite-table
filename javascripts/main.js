@@ -1,4 +1,4 @@
-const InfiniteScroll = require('./infiniteScroll.js');
+const InfiniteScroll = require('./../js/infiniteScroll.js');
 // FAKER
 function slicer(data){
     var i,j,temparray,chunk = 20;

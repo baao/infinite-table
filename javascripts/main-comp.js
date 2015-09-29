@@ -204,7 +204,7 @@ function slicer(data) {
 _infiniteScrollJs2['default'].prototype.faker = function () {
     console.log('hier');
     var xhr = typeof XMLHttpRequest != 'undefined' ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-    xhr.open('get', '/example/exampleData.json', true);
+    xhr.open('get', 'example/exampleData.json', true);
     xhr.onreadystatechange = (function () {
         var status;
         var data;

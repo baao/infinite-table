@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <title>Infinite-table by baao</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>Infinite-table</h1>
+        <h2></h2>
+
+        <section id="downloads">
+          <a href="https://github.com/baao/infinite-table/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/baao/infinite-table/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/baao/infinite-table" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h1>
+<a id="infinite-table" class="anchor" href="#infinite-table" aria-hidden="true"><span class="octicon octicon-link"></span></a>infinite-table</h1>
+
+<p>An infinite scrolling table with editable features. No jQuery.</p>
+
+<h3>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h3>
+
+<p>Minimum required setup:</p>
+
+<pre><code>var InfiniteScroll = require('infinite-table');
+new InfiniteScroll('&lt;table element ID&gt;', {
+    url: &lt;url to get data from&gt;,
+    fields: {
+        &lt;returned data property&gt; : {}
+    }
+});
+</code></pre>
+
+<p>For the spinner, include </p>
+
+<pre><code>&lt;link rel="stylesheet" href="/css/style.css"/&gt;
+</code></pre>
+
+<p>Options: </p>
+
+<pre><code>new InfiniteScroll('&lt;table element ID&gt;', {
+    url: &lt;url to get data from&gt;,
+    fields: {
+        &lt;returned data property&gt; : {
+            data: {
+                &lt;data-attribute&gt;: ':&lt;returned data property&gt;:'
+                // for example:
+                id: ':id:' // will create a data-attribute like data-id="1"
+            },
+            // setup listener, e.g. "click" listener (set as many as you wish):
+            listener: [{
+                handle: (e) =&gt; {alert(e.target.innerHTML)}, // callback
+                on: 'click' // listen for event
+            }],
+            // if editable is provided, the td will be given contenteditable attribute,
+            // same signature as above for listeners
+            editable: [{
+                handle: (e) =&gt; {alert(e.target.innerHTML)},
+                on: 'blur'
+            }]
+        }
+    },
+    perPage: 20, // how many entries should be fetched per "page"
+    loadTiming: 2, // when should the loading happen (defaults to the penultimate tr)
+    transport: 'ajax', // possible transports: ajax/websockets,
+    spinner: 0 // possible 0, 1, 2
+});
+</code></pre>
+
+<p>An ajax (default) / websockets <code>GET</code> request is made whenever you hit the trigger. The signature is:</p>
+
+<pre><code>&lt;url&gt;?skip=&lt;skip&gt;&amp;limit=&lt;limit&gt;
+</code></pre>
+
+<p>So your backend only has to <code>GET</code> skip and limit to query for the data. 
+Example query</p>
+
+<pre><code>SELECT * FROM `foo` LIMIT &lt;limit&gt; OFFSET &lt;skip&gt;
+</code></pre>
+
+<p>If you're using <a href="https://github.com/balderdashy/sails">sails.js</a> you're in luck - simply create the contoller and model,
+everything else works out of the box.</p>
+
+<p>The scroller expects json data as returned object.    </p>
+
+<h3>
+<a id="included-dependencies" class="anchor" href="#included-dependencies" aria-hidden="true"><span class="octicon octicon-link"></span></a>INCLUDED DEPENDENCIES</h3>
+
+<p>lodash, bluebird<br>
+included: SpinKit from <a href="https://github.com/tobiasahlin/SpinKit">https://github.com/tobiasahlin/SpinKit</a></p>
+
+<h3>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>LICENSE</h3>
+
+<p>MIT</p>
+      </section>
+    </div>
+
+    
+  </body>
+</html>

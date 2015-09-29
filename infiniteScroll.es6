@@ -19,7 +19,6 @@ HTMLTableCellElement.prototype.setDataAttribute = function (data, attributes) {
     return this;
 };
 
-
 export default class InfiniteScroll {
     constructor(el, options = {}) {
         if (! (options.fields || options.url)) throw new Error('missing parameter ' + (options.fields ? 'url' : 'fields') + '!');
@@ -29,8 +28,7 @@ export default class InfiniteScroll {
             loadTiming: 2,
             autoload: true,
             transport: 'ajax',
-            spinner: 0,
-            logErrors: true
+            spinner: 0
         }, options);
         this.page = 0;
         this.loaderSpinners = [
@@ -62,12 +60,6 @@ export default class InfiniteScroll {
         } else {
             window.addEventListener('load', this.handler.bind(this), false);
             this.setupListener();
-        }
-    }
-
-    errorLogger () {
-        if (this.options.logErrors) {
-            console.error(arguments);
         }
     }
 
@@ -112,8 +104,8 @@ export default class InfiniteScroll {
         var xhr = new XMLHttpRequest();
         xhr.open('GET', `${this.options.url}?skip=${records[0]}&limit=${records[1]}`, true);
         xhr.onreadystatechange = () => {
-            if (xhr.readyState !== 4) errorLogger(xhr);
-            if (xhr.status !== 200) errorLogger(xhr);
+            if (xhr.readyState !== 4) return;
+            if (xhr.status !== 200) return;
             this.handleResponse(JSON.parse(xhr.responseText));
         };
         xhr.send();

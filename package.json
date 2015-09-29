@@ -1,8 +1,9 @@
 {
   "name": "infinite-table",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "description": "Editable infinite scrolling table",
   "main": "js/infiniteScroll.js",
+  "bin": "js/infiniteScroll.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

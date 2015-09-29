@@ -208,7 +208,6 @@ _infiniteScrollJs2['default'].prototype.faker = function () {
     xhr.onreadystatechange = (function () {
         var status;
         var data;
-        // https://xhr.spec.whatwg.org/#dom-xmlhttprequest-readystate
         if (xhr.readyState == 4) {
             // `DONE`
             status = xhr.status;
@@ -223,12 +222,39 @@ _infiniteScrollJs2['default'].prototype.faker = function () {
 };
 
 new _infiniteScrollJs2['default']('example', {
-    transport: 'faker',
-    url: '/example/exampleData.json',
+    transport: 'faker', // switch to ajax
+    url: '/example/exampleData.json', // switch to url
     fields: {
-        name: {},
-        balance: {},
-        phone: {}
+        name: {
+            data: {
+                id: ':_id:'
+            },
+            listener: [{
+                handle: function handle(e) {
+                    alert('Attribute id: ' + e.target.getAttribute('data-id'));
+                }, // callback
+                on: 'click' // listen for event
+            }]
+        },
+        balance: {
+            editable: [{
+                handle: function handle(e) {
+                    alert('New balance: ' + e.target.innerHTML);
+                },
+                on: 'blur'
+            }]
+        },
+        phone: {
+            data: {
+                phone: ':phone:'
+            }
+        },
+        listener: [{
+            handle: function handle(e) {
+                alert('Attribute phone: ' + e.target.getAttribute('data-phone'));
+            },
+            on: 'click'
+        }]
     }
 });
 

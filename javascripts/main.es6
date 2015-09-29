@@ -18,7 +18,6 @@ console.log('hier');
             xhr.onreadystatechange = function() {
                 var status;
                 var data;
-                // https://xhr.spec.whatwg.org/#dom-xmlhttprequest-readystate
                 if (xhr.readyState == 4) { // `DONE`
                     status = xhr.status;
                     if (status == 200) {
@@ -34,13 +33,36 @@ console.log('hier');
 
     };
 
-    new InfiniteScroll('example', {
-        transport: 'faker',
-        url: '/example/exampleData.json',
-        fields: {
-            name:{},
-            balance:{},
-            phone:{}
-        }
-    })
+new InfiniteScroll('example', {
+    transport: 'faker',  // switch to ajax
+    url: '/example/exampleData.json',  // switch to url
+    fields: {
+        name:{
+            data: {
+                id: ':_id:'
+            },
+            listener: [{
+                handle: (e) => {alert('Attribute id: ' + e.target.getAttribute('data-id'))}, // callback
+                on: 'click' // listen for event
+            }]
+        },
+        balance:{
+            editable: [{
+                handle: (e) => {
+                    alert('New balance: ' + e.target.innerHTML)
+                },
+                on: 'blur'
+            }]
+        },
+        phone:{
+            data: {
+                phone: ':phone:'
+            }
+        },
+        listener: [{
+            handle: (e) => {alert('Attribute phone: ' + e.target.getAttribute('data-phone'))},
+            on: 'click'
+        }]
+    }
+});
 

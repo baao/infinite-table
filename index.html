@@ -109,20 +109,59 @@ included: SpinKit from <a href="https://github.com/tobiasahlin/SpinKit">https://
 <a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>LICENSE</h3>
 
 <p>MIT</p>
+<div id="DEMO">
+    balance is editable, name and phone both have click event listeners attached. Try it out!
+    Example configuration:
 
+   <pre> <code>
+   new InfiniteScroll('example', {
+        transport: 'faker',  // switch to ajax
+        url: '/example/exampleData.json',  // switch to url
+        fields: {
+            name:{
+                data: {
+                    id: ':_id:'
+                },
+                listener: [{
+                    handle: (e) => {alert('Attribute id: ' + e.target.getAttribute('data-id'))}, // callback
+                    on: 'click' // listen for event
+                }]
+            },
+            balance:{
+                editable: [{
+                    handle: (e) => {
+                        alert('New balance: ' + e.target.innerHTML)
+                    },
+                    on: 'blur'
+                }]
+            },
+            phone:{
+                data: {
+                    phone: ':phone:'
+                }
+            },
+            listener: [{
+                handle: (e) => {alert('Attribute phone: ' + e.target.getAttribute('data-phone'))},
+                on: 'click'
+            }]
+        }
+    });
+
+   </code> </pre>
 <div>
     <table id="example">
         <thead>
             <tr>
-                <th>col1</th>
-                <th>col2</th>
-                <th>col3</th>
+                <th>name</th>
+                <th>balance</th>
+                <th>phone</th>
             </tr>
         </thead>
         <tbody>
 
         </tbody>
     </table>
+    </div>
     </div>
       </section>
     </div>

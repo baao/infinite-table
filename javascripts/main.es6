@@ -34,7 +34,7 @@ InfiniteScroll.prototype.faker = function() {
         };
     };
 
-    new InfiniteScroll('exampleTable', {
+    new InfiniteScroll('example', {
         transport: 'faker',
         url: '/example/exampleData.json',
         fields: {

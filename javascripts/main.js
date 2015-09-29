@@ -40,7 +40,7 @@ _infiniteScrollJs2['default'].prototype.faker = function () {
     };
 };
 
-new _infiniteScrollJs2['default']('exampleTable', {
+new _infiniteScrollJs2['default']('example', {
     transport: 'faker',
     url: '/example/exampleData.json',
     fields: {

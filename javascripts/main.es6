@@ -6,6 +6,7 @@ function slicer(data){
         temparray = data.slice(i,i+chunk);
 
     }
+
     return temparray;
 }
 InfiniteScroll.prototype.faker = function() {

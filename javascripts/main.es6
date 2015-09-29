@@ -10,7 +10,7 @@ function slicer(data){
     return temparray;
 }
 InfiniteScroll.prototype.faker = function() {
-
+console.log('hier');
             var xhr = typeof XMLHttpRequest != 'undefined'
                 ? new XMLHttpRequest()
                 : new ActiveXObject('Microsoft.XMLHTTP');

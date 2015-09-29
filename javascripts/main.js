@@ -15,6 +15,7 @@ function slicer(data) {
     for (i = 0, j = data.length; i < j; i += chunk) {
         temparray = data.slice(i, i + chunk);
     }
+
     return temparray;
 }
 _infiniteScrollJs2['default'].prototype.faker = function () {

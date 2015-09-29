@@ -10,7 +10,7 @@ function slicer(data){
     return temparray;
 }
 InfiniteScroll.prototype.faker = function() {
-        var getJSON = function (url) {
+
             var xhr = typeof XMLHttpRequest != 'undefined'
                 ? new XMLHttpRequest()
                 : new ActiveXObject('Microsoft.XMLHTTP');
@@ -31,7 +31,7 @@ InfiniteScroll.prototype.faker = function() {
                 }
             }.bind(this);
             xhr.send();
-        };
+
     };
 
     new InfiniteScroll('example', {

@@ -198,12 +198,13 @@ function slicer(data) {
     for (i = 0, j = data.length; i < j; i += chunk) {
         temparray = data.slice(i, i + chunk);
     }
+
     return temparray;
 }
 _infiniteScrollJs2['default'].prototype.faker = function () {
     var getJSON = function getJSON(url) {
         var xhr = typeof XMLHttpRequest != 'undefined' ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-        xhr.open('get', url, true);
+        xhr.open('get', '/example/exampleData.json', true);
         xhr.onreadystatechange = (function () {
             var status;
             var data;
@@ -222,7 +223,7 @@ _infiniteScrollJs2['default'].prototype.faker = function () {
     };
 };
 
-new _infiniteScrollJs2['default']('exampleTable', {
+new _infiniteScrollJs2['default']('example', {
     transport: 'faker',
     url: '/example/exampleData.json',
     fields: {

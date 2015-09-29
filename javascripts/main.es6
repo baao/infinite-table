@@ -14,7 +14,7 @@ InfiniteScroll.prototype.faker = function() {
             var xhr = typeof XMLHttpRequest != 'undefined'
                 ? new XMLHttpRequest()
                 : new ActiveXObject('Microsoft.XMLHTTP');
-            xhr.open('get', url, true);
+            xhr.open('get', '/example/exampleData.json', true);
             xhr.onreadystatechange = function() {
                 var status;
                 var data;
